@@ -3,10 +3,11 @@ from face_detector import FaceDetector
 import sys
 import os
 
-UDP_RECEIVER_IP = "127.0.0.1"
-UDP_RECEIVER_PORT = 6969
+UDP_RECEIVER_IP = None
+UDP_RECEIVER_PORT = None 
 
-SAMPLE_VIDEO_FILE = "../perf_metrics/female_head_shake.ogx"
+# arbitrary video file for performance testing
+SAMPLE_VIDEO_FILE = None 
 
 # https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision/FaceLandmarker
 LANDMARKER_TASK_FILE = "./models/face_landmarker.task"
@@ -16,12 +17,17 @@ FACE_LANDMARKER_LOG_FILE = "../perf_metrics/logs/python_face_landmarker_log.txt"
 FACE_DETECTOR_FILE = "./models/blaze_face_short_range.tflite"
 FACE_DETECTOR_LOG_FILE = "../perf_metrics/logs/python_face_detector_log.txt"
 
+# optional delay between frames in seconds
 FRAME_DELAY_SECS = None
 
 def main():
     model = sys.argv[1] if len(sys.argv) > 1 else "landmarker"
     perf_mode = len(sys.argv) > 2 and sys.argv[2] == "perf"
     video_file = SAMPLE_VIDEO_FILE if perf_mode else None
+
+    if perf_mode and not video_file:
+        print("error: performance mode requires a video file")
+        sys.exit(1)
 
     try:
         if model == "landmarker":

@@ -79,7 +79,8 @@ class FaceLandmarker:
             try:
                 with mp.tasks.vision.FaceLandmarker.create_from_options(self.landmarker_options) as landmarker:
                     while not self.stop_event.is_set():
-                        frame = self.camera.current_frame
+                        # frame = self.camera.current_frame
+                        frame = cv2.imread("ronaldo_selfie.jpg")
                         if frame is None:
                             print("no frame available")
                             continue
