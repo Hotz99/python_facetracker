@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="showcase.png" alt="showcase"/>
+  <img src="showcase.png" alt="showcase" width="400"/>
 </p>
 
 ## What ?
