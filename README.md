@@ -48,7 +48,9 @@ It's a core component of a current university project and I wanted to showcase m
 
 Run the main script to start the application:
 
-`python main.py [model] [perf]`
+```bash
+python main.py [model] [perf]
+```
 
 #### Arguments:
 1. **`model`** *(optional)*: Specifies the model to use for facial landmark detection. Defaults to `landmarker`.  
